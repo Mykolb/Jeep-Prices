@@ -1,0 +1,27 @@
+{
+  "name": "Jeep-Prices-Repo",
+  "version": "1.0.0",
+  "description": "web scraping various sites to compare jeep prices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mykolb/Jeep-Prices-Repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mykolb/Jeep-Prices-Repo/issues"
+  },
+  "homepage": "https://github.com/Mykolb/Jeep-Prices-Repo#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6",
+    "puppeteer": "^5.5.0"
+  }
+}
