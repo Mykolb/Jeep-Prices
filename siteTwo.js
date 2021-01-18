@@ -1,18 +1,16 @@
 // import puppeteer
 const puppeteer = require('puppeteer');
+const siteTwoModel = require('./models/jeep-model-two');
 //import secrets file
-const myBusiness = require('./secrets')
+const myBusiness = require('./secrets');
 
-module.exports = {
-    getJeepPricesSiteTwo
-}
 
 
 
 async function getJeepPricesSiteTwo(url) {
 
     //wait to launch puppeteer, IT WORKS!!!!
-    const browser = await puppeteer.launch({ headless: false, slowMo: 300, defaultViewport: null});
+    const browser = await puppeteer.launch({ headless: true, slowMo: 300, defaultViewport: null});
     //open a blank pageTwo
     const pageTwo = await browser.newPage();
     pageTwo.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36');
@@ -41,35 +39,49 @@ async function getJeepPricesSiteTwo(url) {
     //waiting for vehicle stats to load
     await pageTwo.waitForSelector('.srp-list-item');
 
-    //this works, now let's try to make it DRY
-    //  const jeepTitle = await pageTwo.$$eval('.vehicleTitle', jeeps => { 
-    // //     //gimme the first 5 results, this works
-    //     return jeeps.map(jeep => jeep.textContent.slice(0, 5))
-    // })
 
-     const carStats = await pageTwo.evaluate(() => 
+     const jeepInfoPageTwo = await pageTwo.evaluate(() => {
      //creating an array
-        Array.from(document.querySelectorAll('.srp-list-item'))
+       const elTwo = Array.from(document.querySelectorAll('.srp-list-item'))
+       let arrTwo = []
         //gimme the info
-        .map(info => ({
-            title: info.querySelector('.srp-list-item-basic-info-model').textContent.trim(),
-            deetz: info.querySelector('.srp-list-item-options-descriptions').textContent.trim(),
-            img: info.querySelector('.srp-list-item-photo img').src,
-            listPrice: info.querySelector('.srp-list-item-price').textContent.trim(),
-            monthlyPrice: info.querySelector('.price-per-month').textContent.trim(), 
-            mileage: info.querySelector('.srp-list-item-basic-info-value:nth-of-type(1)').textContent.trim()
-        }))
-     )
+        Promise.all(elTwo.map(info => {
 
-     console.log(carStats)
+            let dataObjTwo = {
+                title: info.querySelector('.srp-list-item-basic-info-model').textContent.trim(),
+                deetz: info.querySelector('.srp-list-item-options-descriptions').textContent.trim(),
+                img: info.querySelector('.srp-list-item-photo img').src,
+                listPrice: info.querySelector('.srp-list-item-price').textContent.trim(),
+                monthlyPrice: info.querySelector('.price-per-month').textContent.trim(), 
+                mileage: info.querySelector('.srp-list-item-basic-info-value:nth-of-type(1)').textContent.trim()
+            }
+            arrTwo.push(dataObjTwo)
+        })
+        )
+        return arrTwo
+    })
+      
+    //  console.log('page two data', jeepInfoPageTwo)
+    let dataTwo = [...jeepInfoPageTwo]
+    console.log('data obj two', dataTwo)
+
+
+    for(let carsTwo in dataTwo){
+        new siteTwoModel(dataTwo[carsTwo])
+          .save()
+          .catch((err => console.log(err))
+           )
+    }
+
     // //saving it to folder pile path
     //  await pageTwo.pdf({path: myBusiness.filePath})
 
 
-    browser.close()
+   await browser.close()
 
 
 
 }
 
 getJeepPricesSiteTwo('https://www.carfax.com')
+module.exports = getJeepPricesSiteTwo
