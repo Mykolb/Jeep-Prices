@@ -2,13 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
 const secrets = require('../secrets');
+//import scraped files
 const siteOneScrape = require('../siteOne');
+const siteTwoScrape = require('../siteTwo');
 //import routes
-const siteOneRouter = require('../routes/jeep-routes');
+const siteOneRouter = require('../routes/jeep-routes-one');
+const siteTwoRouter = require('../routes/jeep-routes-two');
+
 
 
 server.use(express.json())
 server.use('/siteOne', siteOneRouter)
+server.use('/siteTwo', siteTwoRouter)
 
 
 const uri = secrets.ATLAS_URI;

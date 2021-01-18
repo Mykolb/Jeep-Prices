@@ -1,8 +1,8 @@
 // import puppeteer
 const puppeteer = require('puppeteer');
-const  siteOneModel = require('./models/jeep-model-one')
+const  siteOneModel = require('./models/jeep-model-one');
 //import secrets file
-const myBusiness = require('./secrets')
+const myBusiness = require('./secrets');
 
 
 
@@ -29,7 +29,7 @@ async function getJeepPricesSiteOne(url) {
     //waiting for vehicle stats to load
     await pageOne.waitForSelector('.hasVehicleInfo');
 
-    const jeepInfo = await pageOne.evaluate(() => {
+    const jeepInfoPageOne = await pageOne.evaluate(() => {
         const el = Array.from(document.querySelectorAll('.hasVehicleInfo'))
         let arr = []
 
@@ -50,7 +50,7 @@ async function getJeepPricesSiteOne(url) {
     )
 
     // console.log('jeeps', jeepInfo)
-    let data = [...jeepInfo]
+    let data = [...jeepInfoPageOne]
     
    
     // console.log('Data obj', data)
