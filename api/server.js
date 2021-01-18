@@ -8,7 +8,7 @@ const siteOneRouter = require('../routes/jeep-routes');
 
 
 server.use(express.json())
-server.use('/', siteOneRouter)
+server.use('/siteOne', siteOneRouter)
 
 
 const uri = secrets.ATLAS_URI;

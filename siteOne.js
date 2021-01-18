@@ -53,7 +53,7 @@ async function getJeepPricesSiteOne(url) {
     let data = [...jeepInfo]
     
    
-    console.log('Data obj', data)
+    // console.log('Data obj', data)
 
     for(let cars in data){
         new siteOneModel(data[cars])

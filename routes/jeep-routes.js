@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const siteOneWranglerSchema = require('../models/jeep-model-one')
+const siteOneModel= require('../models/jeep-model-one')
 
 
-router.get('/siteOne', (req, res) => {
-    siteOneWranglerSchema.find()
+router.get('/', (req, res) => {
+    siteOneModel.find()
     .then(data => {
-        if(info.length < 0) {
+        if(data.length > 0) {
             res.status(200).json(data)
         } else {
             res.status(400).json({ message: 'There were no cars found in the database for site one.'})
