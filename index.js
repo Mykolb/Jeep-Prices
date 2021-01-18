@@ -1,19 +1,15 @@
+const server = require('./api/server')
 
-const siteOne = require('./siteOne');
-const siteTwo = require('./siteTwo');
+const port = process.env.PORT || 4000
+server.listen(port, () => {
+    console.log(`*** Server is listening on port ${port}***`)
+})
 
-(async () => {
 
-    try {
-        await siteOne.getJeepPricesSiteOne(url);
-        await siteTwo.getJeepPricesSiteTwo(url);
-        
-    } catch (err) {
 
-        console.error(err);
-}
 
-})()
+
+
 
 
 
