@@ -1,8 +1,7 @@
 // import puppeteer
 const puppeteer = require('puppeteer');
 const siteTwoModel = require('./models/jeep-model-two');
-//import secrets file
-const myBusiness = require('./secrets');
+
 
 
 
