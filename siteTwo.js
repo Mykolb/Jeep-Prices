@@ -10,7 +10,11 @@ const myBusiness = require('./secrets');
 async function getJeepPricesSiteTwo(url) {
 
     //wait to launch puppeteer, IT WORKS!!!!
-    const browser = await puppeteer.launch({ headless: true, slowMo: 300, defaultViewport: null});
+    const browser = await puppeteer.launch({ headless: true, slowMo: 300, defaultViewport: null, 
+        args: [
+        '--no-sandbox'
+      ],
+    });
     //open a blank pageTwo
     const pageTwo = await browser.newPage();
     pageTwo.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36');
