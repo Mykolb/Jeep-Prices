@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
-const secrets = require('../.env');
+require("dotenv").config();
 //import scraped files
 const siteOneScrape = require('../siteOne');
 const siteTwoScrape = require('../siteTwo');
