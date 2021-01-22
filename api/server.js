@@ -23,8 +23,6 @@ mongoose.set('debug', true);
 //logs once db is connected
 const connection = mongoose.connection;
 connection.once('open', () => {
-
-
     console.log('The MongoDB db was connected successfully')
 })
 
