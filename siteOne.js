@@ -2,12 +2,6 @@
 const puppeteer = require('puppeteer');
 const  siteOneModel = require('./models/jeep-model-one');
 
-
-
-
-
-
-
 async function getJeepPricesSiteOne(url) {
 
 
