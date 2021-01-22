@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
-const secrets = require('../secrets');
+const secrets = require('../.env');
 //import scraped files
 const siteOneScrape = require('../siteOne');
 const siteTwoScrape = require('../siteTwo');
@@ -16,7 +16,7 @@ server.use('/siteOne', siteOneRouter)
 server.use('/siteTwo', siteTwoRouter)
 
 
-const uri = secrets.ATLAS_URI;
+const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 mongoose.set('debug', true);
 
