@@ -45,7 +45,7 @@ async function getJeepPricesSiteTwo(url) {
 
      const jeepInfoPageTwo = await pageTwo.evaluate(() => {
      //creating an array
-       const elTwo = Array.from(document.querySelectorAll('.srp-list-item'))
+       const elTwo = Array.from(new Set(document.querySelectorAll('.srp-list-item')))
        let arrTwo = []
         //gimme the info
         Promise.all(elTwo.map(info => {
@@ -81,9 +81,6 @@ async function getJeepPricesSiteTwo(url) {
 
 
    await browser.close()
-
-
-
 }
 
 getJeepPricesSiteTwo('https://www.carfax.com')

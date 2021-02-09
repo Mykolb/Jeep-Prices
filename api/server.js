@@ -4,7 +4,7 @@ const server = express();
 require('dotenv').config();
 //import scraped files
 const siteOneScrape = require('../siteOne');
-// const siteTwoScrape = require('../siteTwo');
+const siteTwoScrape = require('../siteTwo');
 //import routes
 const siteOneRouter = require('../routes/jeep-routes-one');
 const siteTwoRouter = require('../routes/jeep-routes-two');

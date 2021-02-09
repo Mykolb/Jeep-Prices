@@ -3,7 +3,10 @@ const Schema = mongoose.Schema
 
 const siteTwoWranglerSchema = new Schema ({
     title: String,
-    deetz: String,
+    deetz: {
+        type: String,
+        unique: true,
+    },
     img: String,
     listPrice:  String,
     monthlyPrice: String,
