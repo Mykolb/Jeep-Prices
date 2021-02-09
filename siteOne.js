@@ -2,12 +2,6 @@
 const puppeteer = require('puppeteer');
 const  siteOneModel = require('./models/jeep-model-one');
 
-
-
-
-
-
-
 async function getJeepPricesSiteOne(url) {
 
 
@@ -32,7 +26,7 @@ async function getJeepPricesSiteOne(url) {
     await pageOne.waitForSelector('.hasVehicleInfo');
 
     const jeepInfoPageOne = await pageOne.evaluate(() => {
-        const el = Array.from(document.querySelectorAll('.hasVehicleInfo'))
+        const el = Array.from(new Set(document.querySelectorAll('.hasVehicleInfo')))
         let arr = []
 
         Promise.all(el.map(info => {
@@ -42,6 +36,7 @@ async function getJeepPricesSiteOne(url) {
                deetz: info.querySelector('.srpVehicleDetails').textContent.trim(),
                img: info.querySelector('.vehicleImg').src,
                price: info.querySelector('.priceBlock').textContent,
+               
             }
           arr.push(dataObj)  
          
@@ -63,7 +58,6 @@ async function getJeepPricesSiteOne(url) {
           .catch((err => console.log(err))
            )
     }
-
 
 
 await browser.close()
