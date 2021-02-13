@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const siteOneModel= require('../models/jeep-model-one');
-const siteTwoModel = require('../models/jeep-model-two');
 
 //working!
 //get all jeeps in the db for this endpoint
