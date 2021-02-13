@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
+const cors = require('cors')
 require('dotenv').config();
 //import scraped files
 const siteOneScrape = require('../siteOne');
@@ -11,6 +12,7 @@ const siteTwoRouter = require('../routes/jeep-routes-two');
 
 
 server.use(express.json())
+server.use(cors())
 server.use('/siteOne', siteOneRouter)
 server.use('/siteTwo', siteTwoRouter)
 

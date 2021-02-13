@@ -58,6 +58,7 @@ async function getJeepPricesSiteOne(url) {
           .catch((err => console.log(err))
            )
     }
+    
 
 
 await browser.close()
