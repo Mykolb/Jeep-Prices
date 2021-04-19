@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
-const cors = require('cors')
+const cors = require('cors');
 require('dotenv').config();
 //import scraped files
 const siteOneScrape = require('../siteOne');
@@ -9,12 +9,14 @@ const siteTwoScrape = require('../siteTwo');
 //import routes
 const siteOneRouter = require('../routes/jeep-routes-one');
 const siteTwoRouter = require('../routes/jeep-routes-two');
+const favoriteRouter = require('../routes/fave-routes');
 
 
 server.use(express.json())
 server.use(cors())
 server.use('/siteOne', siteOneRouter)
 server.use('/siteTwo', siteTwoRouter)
+server.use('/my-favorites', favoriteRouter)
 
 
 const uri = process.env.ATLAS_URI;
@@ -36,4 +38,4 @@ server.get('/', (req, res) => {
 
 
 
-module.exports = server 
+module.exports = server;

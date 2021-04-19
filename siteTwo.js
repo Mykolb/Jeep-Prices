@@ -9,7 +9,7 @@ const siteTwoModel = require('./models/jeep-model-two');
 async function getJeepPricesSiteTwo(url) {
 
     //wait to launch puppeteer, IT WORKS!!!!
-    const browser = await puppeteer.launch({ headless: true, slowMo: 300, defaultViewport: null, 
+    const browser = await puppeteer.launch({ headless: true,  defaultViewport: null, 
         args: [
         '--no-sandbox'
       ],
