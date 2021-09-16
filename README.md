@@ -15,4 +15,4 @@ https://documenter.getpostman.com/view/7274937/TW6tKV9M
 
 # Installation
 - Clone the project
-- enter npm i into the terminal to install node modules
+- enter - npm i - into the terminal to install node modules
