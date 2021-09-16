@@ -14,4 +14,4 @@ https://jeep-prices-repo-be.herokuapp.com/
 https://documenter.getpostman.com/view/7274937/TW6tKV9M
 
 # Installation
-After cloning, "npm i" will have to be entered into the terminal to run the web scraper.
+After cloning, ##npm## i will have to be entered into the terminal to run the web scraper.
