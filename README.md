@@ -15,4 +15,5 @@ https://documenter.getpostman.com/view/7274937/TW6tKV9M
 
 # Installation
 - Clone the project
-- enter "npm i" to install node modules
+- Enter "npm i" to install node modules
+- Start the server using the command "npm run server"
