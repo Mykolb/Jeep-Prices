@@ -8,11 +8,12 @@ async function getJeepPricesSiteOne(url) {
     //wait to launch puppeteer
     //try copying full x path and grabbing car prices tomorrow, pdf only generates in headless
     //open a blank pageOne
-    const browser = await puppeteer.launch({headless: true, defaultViewport: null, 
+    const browser = await puppeteer.launch({headless: false, defaultViewport: null, slowMo: 250,
         args: [
         '--no-sandbox'
       ],});
-    const pageOne = await browser.newPage();
+      //open one broser tab at a time instead of multiple
+    const [pageOne] = await browser.pages();
     pageOne.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36');
     //navigate to url
     await pageOne.goto(url);

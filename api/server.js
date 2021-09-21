@@ -20,9 +20,9 @@ server.use('/my-favorites', favoriteRouter)
 
 
 const uri = process.env.ATLAS_URI;
-console.log(uri)
+// console.log('CAN YOU SEE', uri)
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 
 //logs once db is connected
 const connection = mongoose.connection;

@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         if(favorites.length > 0) {
             res.status(200).json(favorites)
         }else {
-            res.status(404).json({ message: 'There are no favorites saved in the database.'})  
+            res.status(404).json({ message: 'There are no trucks saved in Favorites.'})  
         }
     })
     .catch(err => console.log(err))
@@ -32,9 +32,9 @@ router.post('/', (req, res) => {
     FaveModel.create(faves)
     .then(faves => {
         if(faves) {
-            res.status(201).json({message: 'Item added had been added to Favorite!'})
+            res.status(201).json({message: 'Truck has been added to Favorites!'})
     } else {
-        res.status(500).json({message: 'Unable to add the item to Favorites.'})
+        res.status(500).json({message: 'Unable to add the truck to Favorites.'})
     }
     })
     .catch(err => console.log(err))
@@ -49,9 +49,9 @@ router.delete('/:id', (req, res) => {
      .exec()
      .then(faves => {
         if(faves) {
-            res.status(201).json({faves, message: 'The item was successfully deleted.'})
+            res.status(201).json({faves, message: 'The truck was successfully deleted.'})
     } else {
-        res.status(404).json({message: 'The item associated with this id cannot be found.'})
+        res.status(404).json({message: 'The truck associated with this id cannot be found.'})
     }
 }) 
 .catch(err => console.log(err))
